@@ -294,8 +294,7 @@ console.log(myFunction17(193278)); //[1,9,3,2,7,8]
 //Write a function that joins these strings together such that they form the following words:
 //'Javascript', 'Countryside', and 'Downtown'
 //You might want to apply basic JS string methods such as replace(), split(), slice() etc.
-
-//??????? CHATGPT
+//Used ChatGPT on these ones
 function myFunction18(str1: string, str2: string): string {
   const word1: string = str1.replace("%", "") + str2.slice(2);
   return word1.charAt(0).toUpperCase() + word1.slice(1);
@@ -311,6 +310,7 @@ console.log(myFunction18("down", "nw%ot")); //'Downtown'
 //Write a function that takes a number (a) as argument
 //If a is prime, return a
 //If not, return the next higher prime number
+//Used ChatGPT on these ones
 
 function isPrime(num: number): boolean {
   if (num <= 1) return false;
@@ -341,15 +341,31 @@ function myFunction19(a: number): number {
   }
 }
 
-console.log(myFunction19(38));//41
+console.log(myFunction19(38)); //41
 
-console.log(myFunction19(7));//7
+console.log(myFunction19(7)); //7
 
-console.log(myFunction19(115));//127
+console.log(myFunction19(115)); //127
 
-console.log(myFunction19(2000));//2003
+console.log(myFunction19(2000)); //2003
 
+//Write a function that takes two numbers, say x and y, as arguments
+//Check if x is divisible by y
+//If yes, return x
+//If not, return the next higher natural number that is divisible by y
 
+function myFunction20(x: number, y: number): number {
+  if (x % y === 0) {
+    return x;
+  } else {
+    return Math.ceil(x / y) * y;
+  }
+}
 
+console.log(myFunction20(1, 23)); //23
 
+console.log(myFunction20(23, 23)); //23
 
+console.log(myFunction20(7, 3)); //9
+
+console.log(myFunction20(-5, 7)); //0
