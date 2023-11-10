@@ -19,7 +19,7 @@ console.log(myFunction(1)); // Output: 'number'
 console.log(myFunction(false)); // Output: 'boolean'
 console.log(myFunction({})); // Output: 'object'
 console.log(myFunction(null)); // Output: 'object'
-console.log(myFunction("string")); // Output: 'string'
+console.log(myFunction("strin")); // Output: 'string'
 console.log(myFunction(["array"])); // Output: 'object'
 
 // Write a function that takes two values, say a and b, as arguments
@@ -95,7 +95,7 @@ console.log(myFunction6("fgedcba")); // Expected output: 'fge'
 //Return the result
 
 function myFunction7(a: string): string {
-  return a.substring(0, Math.ceil(a.length / 2));
+  return a.substring(0, Math.ceil(a.length / 2)); //The Math.ceil() static method always rounds up and returns the smallest integer greater than or equal to a given number.
 }
 
 console.log(myFunction7("abcdefgh")); //Expected 'abcd'
@@ -325,6 +325,7 @@ function isPrime(num: number): boolean {
 
 function Function19(num: number): number {
   let next = num + 1;
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     if (isPrime(next)) {
       return next;
@@ -369,3 +370,150 @@ console.log(myFunction20(23, 23)); //23
 console.log(myFunction20(7, 3)); //9
 
 console.log(myFunction20(-5, 7)); //0
+
+//Write a function that takes two strings (a and b) as arguments
+//Beginning at the end of 'a', insert 'b' after every 3rd character of 'a'
+//Return the resulting string
+
+function myFunction21(a: string, b: string): string {
+  const arr = a.split("");
+  for (let i = arr.length - 3; i > 0; i -= 3) {
+    arr.splice(i, 0, b);
+  }
+  return arr.join("");
+}
+
+console.log(myFunction21("1234567", ".")); //'1.234.567'
+
+console.log(myFunction21("abcde", "$")); //'ab$cde'
+
+console.log(myFunction21("zxyzxyzxyzxyzxyz", "w")); //zwxyzwxyzwxyzwxyzwxyz'
+
+//Write a function that takes a string as argument
+//As it is, the string has no meaning
+//Increment each letter to the next letter in the alphabet
+//Return the correct word
+
+function myFunction22(inputString: string): string {
+  // Convert each character in the string
+  const decryptedChars = inputString.split("").map((char) => {
+    // Check if the character is a letter
+    if (char.match(/[a-zA-Z]/)) {
+      // Increment the Unicode value by 1
+      const nextCharCode = char.charCodeAt(0) + 1;
+
+      // Determine whether the character is uppercase or lowercase
+      const isUpperCase = char === char.toUpperCase();
+
+      // Convert the new Unicode value back to a character
+      return String.fromCharCode(
+        isUpperCase
+          ? ((nextCharCode - 65) % 26) + 65
+          : ((nextCharCode - 97) % 26) + 97
+      );
+    } else {
+      // If the character is not a letter, leave it unchanged
+      return char;
+    }
+  });
+
+  // Join the characters back into a string and return
+  return decryptedChars.join("");
+}
+
+console.log(myFunction22("bnchmf")); //'coding'
+
+console.log(myFunction22("bgddrd")); //'cheese'
+
+console.log(myFunction22("sdrshmf")); //'testing'
+
+// Write a function that takes an array (a) as argument
+// Remove the first 3 elements of 'a'
+// Return the result
+
+function myFunction23(a: number[]): number[] {
+  // Remove the first 3 elements from array 'a'
+  const result = a.slice(3);
+
+  // Return the result
+  return result;
+}
+
+console.log(myFunction23([1, 2, 3, 4])); //[4]
+
+console.log(myFunction23([5, 4, 3, 2, 1, 0])); //[2,1,0]
+
+console.log(myFunction23([99, 1, 1])); //[]
+
+// Write a function that takes an array (a) as argument
+// Extract the last 3 elements of a
+// Return the resulting array
+
+function myFunction24(a: number[]): number[] {
+  const result = a.slice(-3);
+  return result;
+}
+
+console.log(myFunction24([1,2,3,4]));//[2,3,4]
+
+
+console.log(myFunction24([5,4,3,2,1,0]));//[2,1,0]
+
+
+console.log(myFunction24([99,1,1]));//[99,1,1]
+
+
+
+// Write a function that takes an array (a) as argument
+// Extract the first 3 elements of a
+// Return the resulting array
+
+function myFunction25(a: number[]): number[] {
+  // Extract the first 3 elements from array 'a'
+  const result = a.slice(0, 3);
+  return result;
+}
+
+console.log(myFunction25([1,2,3,4]));//[1,2,3]
+
+console.log(myFunction25([5,4,3,2,1,0]));//[5,4,3]
+
+
+console.log(myFunction25([99,1,1]));//[99,1,1]
+
+
+
+// Write a function that takes an array (a) and a number (n) as arguments
+// It should return the last n elements of a
+
+function myFunction26(a: number[], n: number): number[] {
+  // Return the last n elements from array 'a'
+  const result = a.slice(-n);
+  return result;
+}
+
+console.log(myFunction26([1, 2, 3, 4, 5], 2));//[ 4, 5 ]
+
+
+console.log(myFunction26([1, 2, 3], 6));//[ 1, 2, 3 ]
+
+
+console.log(myFunction26([1, 2, 3, 4, 5, 6, 7, 8], 3));//[ 6, 7, 8 ]
+
+// Write a function that takes an array (a) and a value (b) as argument
+// The function should clean a from all occurrences of b
+// Return the filtered array
+
+
+function myFunction27(a: (number | string | boolean)[], b: number | string | boolean): (number | string | boolean)[] {
+  // Use the filter method to create a new array without occurrences of b
+  const result = a.filter(element => element !== b);
+  
+  return result;
+}
+
+// Example usage
+console.log(myFunction27([1, 2, 3], 2));           // Output: [1, 3]
+console.log(myFunction27([1, 2, '2'], '2'));      // Output: [1, 2]
+console.log(myFunction27([false, '2', 1], false));// Output: ['2', 1]
+console.log(myFunction27([1, 2, '2', 1], 1));     // Output: [2, '2']
