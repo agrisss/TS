@@ -454,15 +454,11 @@ function myFunction24(a: number[]): number[] {
   return result;
 }
 
-console.log(myFunction24([1,2,3,4]));//[2,3,4]
+console.log(myFunction24([1, 2, 3, 4])); //[2,3,4]
 
+console.log(myFunction24([5, 4, 3, 2, 1, 0])); //[2,1,0]
 
-console.log(myFunction24([5,4,3,2,1,0]));//[2,1,0]
-
-
-console.log(myFunction24([99,1,1]));//[99,1,1]
-
-
+console.log(myFunction24([99, 1, 1])); //[99,1,1]
 
 // Write a function that takes an array (a) as argument
 // Extract the first 3 elements of a
@@ -474,14 +470,11 @@ function myFunction25(a: number[]): number[] {
   return result;
 }
 
-console.log(myFunction25([1,2,3,4]));//[1,2,3]
+console.log(myFunction25([1, 2, 3, 4])); //[1,2,3]
 
-console.log(myFunction25([5,4,3,2,1,0]));//[5,4,3]
+console.log(myFunction25([5, 4, 3, 2, 1, 0])); //[5,4,3]
 
-
-console.log(myFunction25([99,1,1]));//[99,1,1]
-
-
+console.log(myFunction25([99, 1, 1])); //[99,1,1]
 
 // Write a function that takes an array (a) and a number (n) as arguments
 // It should return the last n elements of a
@@ -492,28 +485,708 @@ function myFunction26(a: number[], n: number): number[] {
   return result;
 }
 
-console.log(myFunction26([1, 2, 3, 4, 5], 2));//[ 4, 5 ]
+console.log(myFunction26([1, 2, 3, 4, 5], 2)); //[ 4, 5 ]
 
+console.log(myFunction26([1, 2, 3], 6)); //[ 1, 2, 3 ]
 
-console.log(myFunction26([1, 2, 3], 6));//[ 1, 2, 3 ]
-
-
-console.log(myFunction26([1, 2, 3, 4, 5, 6, 7, 8], 3));//[ 6, 7, 8 ]
+console.log(myFunction26([1, 2, 3, 4, 5, 6, 7, 8], 3)); //[ 6, 7, 8 ]
 
 // Write a function that takes an array (a) and a value (b) as argument
 // The function should clean a from all occurrences of b
 // Return the filtered array
 
+function myFunction27(
+  a: (number | string | boolean)[],
+  b: number | string | boolean
+): (number | string | boolean)[] {
+  //filter method to create a new array without occurrences of b
+  const result = a.filter((element) => element !== b);
 
-function myFunction27(a: (number | string | boolean)[], b: number | string | boolean): (number | string | boolean)[] {
-  // Use the filter method to create a new array without occurrences of b
-  const result = a.filter(element => element !== b);
-  
+  return result;
+}
+console.log(myFunction27([1, 2, 3], 2)); // Output: [1, 3]
+console.log(myFunction27([1, 2, "2"], "2")); // Output: [1, 2]
+console.log(myFunction27([false, "2", 1], false)); // Output: ['2', 1]
+console.log(myFunction27([1, 2, "2", 1], 1)); // Output: [2, '2']
+
+// Write a function that takes an array (a) as argument
+// Return the number of elements in a
+
+function myFunction28(arr: string | number[]) {
+  return arr.length;
+}
+
+console.log(myFunction28([1, 2, 2, 4])); //4
+
+console.log(myFunction28([9, 9, 9])); //3
+
+console.log(myFunction28([4, 3, 2, 1, 0])); //5
+
+// Write a function that takes an array of numbers as argument
+// Return the number of negative values in the array
+
+function myFunction29(arr: number[]) {
+  return arr.filter((num: number) => num < 0).length;
+}
+
+console.log(myFunction29([1, -2, 2, -4])); //2
+
+console.log(myFunction29([0, 9, 1])); //0
+
+console.log(myFunction29([4, -3, 2, 1, 0])); //1
+
+// Write a function that takes an array of numbers as argument
+// It should return an array with the numbers sorted in descending order
+
+function myFunction30(arr: number[]): number[] {
+  return arr.slice().sort((a, b) => b - a);
+}
+
+console.log(myFunction30([1, 3, 2])); // [3, 2, 1]
+console.log(myFunction30([4, 2, 3, 1])); // [4, 3, 2, 1]
+
+// Write a function that takes an array of strings as argument
+// Sort the array elements alphabetically
+// Return the result
+
+function myFunction31(arr: string[]) {
+  return arr.slice().sort();
+}
+
+console.log(myFunction31(["b", "c", "d", "a"])); // ['a', 'b', 'c', 'd']
+console.log(myFunction31(["z", "c", "d", "a", "y", "a", "w"])); // ['a', 'a', 'c', 'd', 'w', 'y', 'z']
+
+// Write a function that takes an array of numbers as argument
+// It should return the average of the numbers
+
+function myFunction32(arr: number[]) {
+  if (arr.length === 0) {
+    return 0; // Avoid division by zero for an empty array
+  }
+
+  const sum = arr.reduce((acc, num) => acc + num, 0);
+  return sum / arr.length;
+}
+
+console.log(myFunction32([10, 100, 40])); //50
+
+console.log(myFunction32([10, 100, 1000])); //370
+
+console.log(myFunction32([-50, 0, 50, 200])); //50
+
+// Write a function that takes an array of strings as argument
+// Return the longest string
+
+function myFunction33(arr: string[]) {
+  if (arr.length === 0) {
+    return null; // Return null for an empty array
+  }
+
+  let longestString = arr[0]; // Assume the first string is the longest
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].length > longestString.length) {
+      longestString = arr[i];
+    }
+  }
+
+  return longestString;
+}
+
+console.log(myFunction33(["help", "me"])); // Expected output: 'help'
+console.log(myFunction33(["I", "need", "candy"])); // Expected output: 'candy'
+
+// Write a function that takes an array as argument
+// It should return true if all elements in the array are equal
+// It should return false otherwise
+
+function myFunction34(arr: string[]) {
+  if (arr.length === 0) {
+    return false; // Return false for an empty array
+  }
+
+  const firstElement = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] !== firstElement) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(myFunction34(["true", "true", "true", "true"])); // Expected output: true
+console.log(myFunction34(["test", "test", "test"])); // Expected output: true
+console.log(myFunction34(["1", "1", "1", "2"])); // Expected output: false
+console.log(myFunction34(["10", "10", "10", "10"])); // Expected output: false
+
+// Write a function that takes arguments an arbitrary number of arrays
+// It should return an array containing the values of all arrays
+
+function myFunction35(...arrays: unknown[]): unknown[] {
+  return [].concat(...arrays);
+}
+
+console.log(myFunction35([1, 2, 3], [4, 5, 6])); // Expected output: [1, 2, 3, 4, 5, 6]
+console.log(myFunction35(["a", "b", "c"], [4, 5, 6])); // Expected output: ['a', 'b', 'c', 4, 5, 6]
+console.log(myFunction35([true, true], [1, 2], ["a", "b"])); // Expected output: [true, true, 1, 2, 'a', 'b']
+
+// Write a function that takes an array of objects as argument
+// Sort the array by property b in ascending order
+// Return the sorted array
+
+function myFunction36(
+  arr: { a: number; b: number }[]
+): { a: number; b: number }[] {
+  return arr.slice().sort((a, b) => a.b - b.b);
+}
+
+console.log(
+  myFunction36([
+    { a: 1, b: 2 },
+    { a: 5, b: 4 },
+  ])
+); // Expected output: [{a:1, b:2}, {a:5, b:4}]
+console.log(
+  myFunction36([
+    { a: 2, b: 10 },
+    { a: 5, b: 4 },
+  ])
+); // Expected output: [{a:5, b:4}, {a:2, b:10}]
+console.log(
+  myFunction36([
+    { a: 1, b: 7 },
+    { a: 2, b: 1 },
+  ])
+); // Expected output: [{a:2, b:1}, {a:1, b:7}]
+
+// Write a function that takes two arrays as arguments
+// Merge both arrays and remove duplicate values
+// Sort the merge result in ascending order
+// Return the resulting array
+
+function myFunction37(arr1: number[], arr2: number[]): number[] {
+  const mergedArray = [...new Set([...arr1, ...arr2])]; // Merge and remove duplicates
+  return mergedArray.sort((a, b) => a - b); // Sort in ascending order
+}
+
+console.log(myFunction37([1, 2, 3], [3, 4, 5])); // Expected output: [1, 2, 3, 4, 5]
+console.log(myFunction37([-10, 22, 333, 42], [-11, 5, 22, 41, 42])); // Expected output: [-11, -10, 5, 22, 41, 42, 333]
+
+// Write a function that takes an array (a) and a number (b) as arguments
+// Sum up all array elements with a value greater than b
+// Return the sum
+
+function myFunction38(arr: number[], b: number): number {
+  return arr.reduce((sum, num) => (num > b ? sum + num : sum), 0);
+}
+
+console.log(myFunction38([1, 2, 3, 4, 5, 6, 7], 2)); // Expected output: 25
+console.log(myFunction38([-10, -11, -3, 1, -4], -3)); // Expected output: 1
+console.log(myFunction38([78, 99, 100, 101, 401], 99)); // Expected output: 602
+
+// Write a function that takes two numbers (min and max) as arguments
+// Return an array of numbers in the range min to max
+
+function myFunction39(min: number, max: number): number[] {
+  const result: number[] = [];
+  for (let i = min; i <= max; i++) {
+    result.push(i);
+  }
   return result;
 }
 
-// Example usage
-console.log(myFunction27([1, 2, 3], 2));           // Output: [1, 3]
-console.log(myFunction27([1, 2, '2'], '2'));      // Output: [1, 2]
-console.log(myFunction27([false, '2', 1], false));// Output: ['2', 1]
-console.log(myFunction27([1, 2, '2', 1], 1));     // Output: [2, '2']
+console.log(myFunction39(2, 10)); // Expected output: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(myFunction39(1, 3)); // Expected output: [1, 2, 3]
+console.log(myFunction39(-5, 5)); // Expected output: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+console.log(myFunction39(2, 7)); // Expected output: [2, 3, 4, 5, 6, 7]
+
+// Write a function that takes an array of strings as argument
+// Group those strings by their first letter
+// Return an object that contains properties with keys representing first letters
+// The values should be arrays of strings containing only the corresponding strings
+// For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
+// { a: ['Alf', 'Alice'], b: ['Ben']}
+
+function myFunction40(arr: string[]): { [key: string]: string[] } {
+  const result: { [key: string]: string[] } = {};
+
+  arr.forEach((str) => {
+    const firstLetter = str[0].toLowerCase();
+    if (!result[firstLetter]) {
+      result[firstLetter] = [str];
+    } else {
+      result[firstLetter].push(str);
+    }
+  });
+
+  return result;
+}
+
+console.log(myFunction40(["Alf", "Alice", "Ben"])); // Expected output: { a: ['Alf', 'Alice'], b: ['Ben'] }
+console.log(myFunction40(["Ant", "Bear", "Bird"])); // Expected output: { a: ['Ant'], b: ['Bear', 'Bird'] }
+console.log(myFunction40(["Berlin", "Paris", "Prague"])); // Expected output: { b: ['Berlin'], p: ['Paris', 'Prague'] }
+
+// Write a function that takes an array with arbitrary elements and a number as arguments
+// Return a new array, the first element should be either the given number itself
+// or zero if the number is smaller than 6
+// The other elements should be the elements of the original array
+// Try not to mutate the original array
+
+function myFunction41(arr: unknown[], num: number): unknown[] {
+  const result = [num < 6 ? 0 : num, ...arr.slice()];
+  return result;
+}
+
+console.log(myFunction41([1, 2, 3], 6)); // Expected output: [6, 1, 2, 3]
+console.log(myFunction41(["a", "b"], 2)); // Expected output: [0, 'a', 'b']
+console.log(myFunction41([null, false], 11)); // Expected output: [11, null, false]
+
+// Write a function that takes an array (a) and a value (n) as arguments
+// Save every nth element in a new array
+// Return the new array
+
+function myFunction42(arr: number[], n: number): number[] {
+  const result: number[] = [];
+
+  for (let i = n - 1; i < arr.length; i += n) {
+    result.push(arr[i]);
+  }
+
+  return result;
+}
+
+console.log(myFunction42([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)); // Expected output: [3, 6, 9]
+console.log(myFunction42([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5)); // Expected output: [6, 1]
+console.log(myFunction42([7, 2, 1, 6, 3, 4, 5, 8, 9, 10], 2)); // Expected output: [2, 6, 4, 8, 10]
+
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key country
+
+function myFunction43(obj: { continent: string; country: string }): string {
+  return obj.country;
+}
+
+console.log(myFunction43({ continent: "Asia", country: "Japan" })); // Expected output: 'Japan'
+console.log(myFunction43({ country: "Sweden", continent: "Europe" })); // Expected output: 'Sweden'
+
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key 'prop-2'
+// Tip: you might want to use the square brackets property accessor
+
+function myFunction44(obj: { [key: string]: unknown }): unknown {
+  return obj["prop-2"];
+}
+
+console.log(myFunction44({ one: 1, "prop-2": 2 })); // Expected output: 2
+console.log(myFunction44({ "prop-2": "two", prop: "test" })); // Expected output: 'two'
+
+// Write a function that takes an object with two properties and a string as arguments
+// It should return the value of the property with key equal to the value of the string
+
+function myFunction45(obj: { [key: string]: unknown }, key: string): unknown {
+  return obj[key];
+}
+
+console.log(myFunction45({ continent: "Asia", country: "Japan" }, "continent")); // Expected output: 'Asia'
+console.log(
+  myFunction45({ country: "Sweden", continent: "Europe" }, "country")
+); // Expected output: 'Sweden'
+
+// Write a function that takes an object (a) and a string (b) as argument
+// Return true if a has a property with key b
+// Return false otherwise
+
+function myFunction46(obj: { [key: string]: unknown }, key: string): boolean {
+  return key in obj;
+}
+
+console.log(myFunction46({ a: 1, b: 2, c: 3 }, "b")); // Expected output: true
+console.log(myFunction46({ x: "a", y: "b", z: "c" }, "a")); // Expected output: false
+console.log(myFunction46({ x: "a", y: "b", z: "c" }, "z")); // Expected output: true
+
+// Write a function that a string (a) as argument
+// Create an object that has a property with key 'key' and a value of a
+// Return the object
+
+function myFunction47(str: string): { key: string } {
+  return { key: str };
+}
+
+console.log(myFunction47("a")); // Expected output: { key: 'a' }
+console.log(myFunction47("z")); // Expected output: { key: 'z' }
+console.log(myFunction47("b")); // Expected output: { key: 'b' }
+
+// Write a function that takes two strings (a and b) as arguments
+// Create an object that has a property with key 'a' and a value of 'b'
+// Return the object
+
+function myFunction48(a: string, b: string): { [key: string]: string } {
+  const result: { [key: string]: string } = {};
+  result[a] = b;
+  return result;
+}
+
+console.log(myFunction48("a", "b")); // Expected output: { a: 'b' }
+console.log(myFunction48("z", "x")); // Expected output: { z: 'x' }
+console.log(myFunction48("b", "w")); // Expected output: { b: 'w' }
+
+// Write a function that takes two arrays (a and b) as arguments
+// Create an object that has properties with keys 'a' and corresponding values 'b'
+// Return the object
+
+function myFunction49(
+  keys: (string | number)[],
+  values: unknown[]
+): { [key: string]: unknown } {
+  const result: { [key: string]: unknown } = {};
+
+  keys.forEach((key, index) => {
+    result[key.toString()] = values[index];
+  });
+
+  return result;
+}
+
+console.log(myFunction49(["a", "b", "c"], [1, 2, 3])); // Expected output: { a: 1, b: 2, c: 3 }
+console.log(myFunction49(["w", "x", "y", "z"], [10, 9, 5, 2])); // Expected output: { w: 10, x: 9, y: 5, z: 2 }
+console.log(myFunction49([1, "b"], ["a", 2])); // Expected output: { '1': 'a', b: 2 }
+
+// Write a function that takes an object (a) as argument
+// Return an array with all object keys
+
+function myFunction50(obj: { [key: string]: unknown }): string[] {
+  return Object.keys(obj);
+}
+
+console.log(myFunction50({ a: 1, b: 2, c: 3 })); // Expected output: ['a', 'b', 'c']
+console.log(myFunction50({ j: 9, i: 2, x: 3, z: 4 })); // Expected output: ['j', 'i', 'x', 'z']
+console.log(myFunction50({ w: 15, x: 22, y: 13 })); // Expected output: ['w', 'x', 'y']
+
+// Write a function that takes an object (a) as argument
+// Return the sum of all object values
+
+function myFunction51(obj: { [key: string]: number }): number {
+  return Object.values(obj).reduce((sum, value) => sum + value, 0);
+}
+
+console.log(myFunction51({ a: 1, b: 2, c: 3 })); // Expected output: 6
+console.log(myFunction51({ j: 9, i: 2, x: 3, z: 4 })); // Expected output: 18
+console.log(myFunction51({ w: 15, x: 22, y: 13 })); // Expected output: 50
+
+// Write a function that takes an object as argument
+// It should return an object with all original object properties
+// except for the property with key 'b'
+
+function myFunction52(obj: { [key: string]: unknown }): {
+  [key: string]: unknown;
+} {
+  const { b, ...result } = obj;
+  return result;
+}
+
+console.log(myFunction52({ a: 1, b: 7, c: 3 })); // Expected output: { a: 1, c: 3 }
+console.log(myFunction52({ b: 0, a: 7, d: 8 })); // Expected output: { a: 7, d: 8 }
+console.log(myFunction52({ e: 6, f: 4, b: 5, a: 3 })); // Expected output: { e: 6, f: 4, a: 3 }
+
+// Write a function that takes two objects as arguments
+// Unfortunately, the property 'b' in the second object has the wrong key
+// should be named 'd' instead
+// Merge both objects and correct the wrong property name
+// Return the resulting object
+// It should have the properties 'a', 'b', 'c', 'd', and 'e'
+
+/// can't figure it out
+
+// Write a function that takes an object (a) and a number (b) as arguments
+// Multiply all values of 'a' by 'b'
+// Return the resulting object
+
+function myFunction53(
+  obj: { [key: string]: number },
+  multiplier: number
+): { [key: string]: number } {
+  const result: { [key: string]: number } = {};
+
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result[key] = obj[key] * multiplier;
+    }
+  }
+
+  return result;
+}
+
+console.log(myFunction53({ a: 1, b: 2, c: 3 }, 3)); // Expected output: { a: 3, b: 6, c: 9 }
+console.log(myFunction53({ j: 9, i: 2, x: 3, z: 4 }, 10)); // Expected output: { j: 90, i: 20, x: 30, z: 40 }
+console.log(myFunction53({ w: 15, x: 22, y: 13 }, 6)); // Expected output: { w: 90, x: 132, y: 78 }
+
+// Write a function that takes an object as argument
+// Somehow, the properties and keys of the object got mixed up
+// Swap the Javascript object's key with its values and return the resulting object
+
+// console.log(myFunction54({ z: 'a', y: 'b', x: 'c', w: 'd' })); // Expected output: { a: 'z', b: 'y', c: 'x', d: 'w' }
+// console.log(myFunction54({ 2: 'a', 4: 'b', 6: 'c', 8: 'd' })); // Expected output: { a: '2', b: '4', c: '6', d: '8' }
+// console.log(myFunction54({ a: 1, z: 24 }));                   // Expected output: { '1': 'a', '24': 'z' }
+
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+
+function myFunction54(obj: { [key: string]: string }): {
+  [key: string]: string | null;
+} {
+  const result: { [key: string]: string | null } = {};
+
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = obj[key].trim(); // Remove leading and trailing whitespaces
+
+      if (value === "" || value === " ") {
+        result[key] = null;
+      } else {
+        result[key] = obj[key];
+      }
+    }
+  }
+
+  return result;
+}
+
+console.log(myFunction54({ a: "a", b: "b", c: "" })); // Expected output: { a: 'a', b: 'b', c: null }
+console.log(myFunction54({ a: "", b: "b", c: " ", d: "d" })); // Expected output: { a: null, b: 'b', c: null, d: 'd' }
+console.log(myFunction54({ a: "a", b: "b ", c: " ", d: "" })); // Expected output: { a: 'a', b: 'b ', c: null, d: null }
+
+// Write a function that takes an object as argument containing properties with personal information
+// Extract firstName, lastName, size, and weight if available
+// If size or weight is given transform the value to a string
+// Attach the unit cm to the size
+// Attach the unit kg to the weight
+// Return a new object with all available properties that we are interested in
+
+// myFunction({fn: 'Lisa', ln: 'Müller', age: 17, size: 175, weight: 67})
+// Expected
+// {fn: 'Lisa', ln: 'Müller', size: '175cm', weight: '67kg'}
+
+// myFunction({fn: 'Martin', ln: 'Harper', age: 26, email: 'martin.harper@test.de', weight: 102})
+// Expected
+// {fn: 'Martin', ln: 'Harper', weight: '102kg'}
+
+// myFunction({fn: 'Andrew', ln: 'Harper', age: 81, size: 175, weight: 71})
+// Expected
+// {fn: 'Andrew', ln: 'Harper', size: '175cm', weight: '71kg'}
+
+// myFunction({fn: 'Matthew', ln: 'Müller', age: 19, email: 'matthew@mueller.de'})
+// Expected
+// {fn: 'Matthew', ln: 'Müller'}
+
+// Write a function that takes an array of objects and a string as arguments
+// Add a property with key 'continent' and value equal to the string to each of the objects
+// Return the new array of objects
+// Tip: try not to mutate the original array
+
+type myFunction57 = {
+  city: string;
+  country: string;
+};
+
+function addContinent(arr: myFunction57[], continent: string): myFunction57[] {
+  return arr.map((obj) => ({
+    ...obj,
+    continent: continent,
+  }));
+}
+
+const result1 = addContinent(
+  [
+    { city: "Tokyo", country: "Japan" },
+    { city: "Bangkok", country: "Thailand" },
+  ],
+  "Asia"
+);
+console.log(result1);
+// Expected output: [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+
+const result2 = addContinent(
+  [
+    { city: "Stockholm", country: "Sweden" },
+    { city: "Paris", country: "France" },
+  ],
+  "Europe"
+);
+console.log(result2);
+// Expected output: [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]
+
+// Write a function that takes an array of numbers as argument
+// Convert the array to an object
+// It should have a key for each unique value of the array
+// The corresponding object value should be the number of times the key occurs within the array
+
+function myFunction58(arr: number[]): { [key: number]: number } {
+  const result: { [key: number]: number } = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    const value = arr[i];
+    result[value] = (result[value] || 0) + 1;
+  }
+
+  return result;
+}
+
+const result = myFunction58([1, 2, 2, 3]);
+console.log(result);
+// Expected output: {1: 1, 2: 2, 3: 1}
+
+const resultt = myFunction58([9, 9, 9, 99]);
+console.log(resultt);
+// Expected output: {9: 3, 99: 1}
+
+const resulttt = myFunction58([4, 3, 2, 1]);
+console.log(resulttt);
+// Expected output: {1: 1, 2: 1, 3: 1, 4: 1}
+
+// Write a function that takes two date instances as arguments
+// It should return true if the dates are equal
+// It should return false otherwise
+
+function myFunction59(date1: Date, date2: Date): boolean {
+  // Convert dates to strings for easy comparison
+  const dateString1 = date1.toISOString();
+  const dateString2 = date2.toISOString();
+
+  // Compare the string representations of the dates
+  return dateString1 === dateString2;
+}
+
+console.log(
+  myFunction59(new Date("2000/01/01 08:00:00"), new Date("2000/01/01 08:45:00"))
+);
+// Expected output: false
+
+console.log(
+  myFunction59(new Date("2000/01/01 08:00:00"), new Date("2000/01/01 08:00:00"))
+);
+// Expected output: true
+
+console.log(
+  myFunction59(new Date("2001/01/01 08:00:00"), new Date("2000/01/01 08:00:00"))
+);
+// Expected output: false
+
+// Write a function that takes two date instances as argument
+// It should return the number of days that lies between those dates
+
+function myFunction60(date1: Date, date2: Date): number {
+  // Calculate the time difference in milliseconds
+  const timeDifference = Math.abs(date2.getTime() - date1.getTime());
+
+  // Calculate the number of days
+  const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+  return daysDifference;
+}
+
+console.log(myFunction60(new Date("2020-06-11"), new Date("2020-06-01")));
+// Expected output: 10
+
+console.log(myFunction60(new Date("2000-01-01"), new Date("2020-06-01")));
+// Expected output: 7457
+
+// Write a function that takes two date instances as argument
+// It should return true if they fall on the exact same day
+// It should return false otherwise
+
+function myFunction61(date1: Date, date2: Date): boolean {
+  // Check if year, month, and day are the same
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+}
+
+console.log(myFunction61(new Date("2000/01/01"), new Date("2000/01/01")));
+// Expected output: true
+
+console.log(myFunction61(new Date("2000/01/01"), new Date("2000/01/02")));
+// Expected output: false
+
+console.log(myFunction61(new Date("2001/01/01"), new Date("2000/01/01")));
+// Expected output: false
+
+console.log(myFunction61(new Date("2000/11/01"), new Date("2000/01/01")));
+// Expected output: false
+
+// Write a function that takes two number arrays as parameters
+// and return an array which contains elements from both
+// arrays
+
+function myFunction62(arr1: number[], arr2: number[]): number[] {
+  return [...arr1, ...arr2];
+}
+
+console.log(myFunction62([1, 2], [3, 4])); // Expected output: [1, 2, 3, 4]
+console.log(myFunction62([1, 2], [3, 4, 5, 6])); // Expected output: [1, 2, 3, 4, 5, 6]
+
+// Write a function that takes an array and a string as parameters
+// and return an array which contains all elements from the given array
+// and the given string as the last element
+
+function myFunction63(arr: string[], newElement: string): string[] {
+  return [...arr, newElement];
+}
+
+const fruitsList = myFunction63(["Apple", "Orange", "Banana"], "Kiwi");
+console.log(fruitsList); // Expected output: ['Apple', 'Orange', 'Banana', 'Kiwi']
+
+// Write a function that takes an array and a string as parameters
+// and return an array which contains all elements from the given array
+// and the given string as the first element
+
+function myFunction64(arr: string[], newElement: string): string[] {
+  return [newElement, ...arr];
+}
+
+const fruitsList2 = myFunction64(["Apple", "Orange", "Banana"], "Kiwi");
+console.log(fruitsList2); // Expected output: ['Kiwi', 'Apple', 'Orange', 'Banana']
+
+// Write a function that takes two objects as parameters
+// and return an object which contains properties from both
+// objects
+
+function myFunction65(
+  obj1: { [key: string]: number },
+  obj2: { [key: string]: number }
+): { [key: string]: number } {
+  return { ...obj1, ...obj2 };
+}
+
+const resultas = myFunction65({ a: 1, b: 2 }, { c: 3, d: 4 });
+console.log(resultas);
+// Expected output: { a: 1, b: 2, c: 3, d: 4 }
+
+const resultaas = myFunction65({ a: 1, b: 2 }, { c: 3, d: 4, e: 5, f: 6 });
+console.log(resultaas);
+// Expected output: { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 }
+
+// Write a function that takes an object and a string as parameters
+// and return an object which contains properties from the given object
+// and a new property favoriteMovie with the value equal to the given string
+
+type myFunction66 = {
+  [key: string]: unknown;
+};
+
+function myFunction66(obj: myFunction66, favoriteMovie: string): myFunction66 {
+  return { ...obj, favoriteMovie };
+}
+
+const resultin = myFunction66({ eyeColor: "green", age: 10 }, "Garfield");
+console.log(resultin);
+// Expected output: { eyeColor: 'green', age: 10, favoriteMovie: 'Garfield' }
+
+const resultins = myFunction66({ eyeColor: "blue", age: 15 }, "Twilight");
+console.log(resultins);
+// Expected output: { eyeColor: 'blue', age: 15, favoriteMovie: 'Twilight' }
