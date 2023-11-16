@@ -992,14 +992,14 @@ type myFunction57 = {
   country: string;
 };
 
-function addContinent(arr: myFunction57[], continent: string): myFunction57[] {
+function myFunction57(arr: myFunction57[], continent: string): myFunction57[] {
   return arr.map((obj) => ({
     ...obj,
     continent: continent,
   }));
 }
 
-const result1 = addContinent(
+const result1 = myFunction57(
   [
     { city: "Tokyo", country: "Japan" },
     { city: "Bangkok", country: "Thailand" },
